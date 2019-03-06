@@ -1,0 +1,20 @@
+package ${servicePackage};
+
+import java.util.List;
+import java.util.Map;
+
+import ${entityPackage}.${Entity};
+
+public interface ${Entity}${serviceSelf}Service {
+
+	public List<${Entity}> find${Entity}List(Long channelId)throws Exception;
+
+	public ${Entity} find${Entity}Detail(Long ${entity}Id)throws Exception;
+	
+	public boolean update${Entity}(${Entity} ${entity})throws Exception;
+	
+	public boolean Add${Entity}(${Entity} ${entity})throws Exception;
+	
+	//自定义====================================================================
+
+}

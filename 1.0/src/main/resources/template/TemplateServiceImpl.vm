@@ -1,0 +1,49 @@
+package ${serviceImplPackage};
+
+import ${daoPackage}.${Entity}Mapper;
+import ${entityPackage}.${Entity};
+import ${entityPackage}.${Entity}Example;
+import ${servicePackage}.${Entity}${serviceSelf}Service;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
+
+@Service("${entity}${serviceSelf}Service")
+public class ${Entity}${serviceSelf}ServiceImpl implements ${Entity}${serviceSelf}Service{
+	@Resource
+	${Entity}Mapper ${entity}Mapper;
+	
+	@Override
+	public List<${Entity}> find${Entity}List(Long channelId) throws Exception {
+	    ${Entity}Example example=new ${Entity}Example();
+        ${Entity}Example.Criteria criteria = example.createCriteria();
+        criteria.and${Entity}ChannelIdEqualTo(channelId);
+        return ${entity}Mapper.selectByExample(example);
+	}
+	
+	@Override
+	public ${Entity} find${Entity}Detail(Long ${entity}Id) throws Exception {
+		return ${entity}Mapper.selectByPrimaryKey(${entity}Id);
+	}
+
+	@Override
+	public boolean update${Entity}(${Entity} ${entity}) throws Exception {
+		int r = ${entity}Mapper.updateByPrimaryKeySelective(${entity});
+		if(r>0){
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean Add${Entity}(${Entity} ${entity}) throws Exception {
+		int r = ${entity}Mapper.insertSelective(${entity});
+		if(r>0){
+			return true;
+		}
+		return false;
+	}
+}

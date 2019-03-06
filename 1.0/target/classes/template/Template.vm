@@ -1,0 +1,82 @@
+package ${controllerPackage};
+
+import ${entityPackage}.${Entity};
+import ${servicePackage}.${Entity}${serviceSelf}Service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+ /*
+  *	@author ${author}
+  * @since ${date}
+  *
+  */
+@Controller
+@Scope("prototype")
+@RequestMapping("version3/${entity}")
+public class ${Entity}${controllerSelf}Controller {
+	@Resource
+	${Entity}${serviceSelf}Service ${entity}${serviceSelf}Service;
+
+	protected final Map<String,Object> map = new HashMap<String,Object>();
+	
+	/**
+	 * 列表查询
+	 * 
+	 */
+	@RequestMapping(value = "get${Entity}List", method = RequestMethod.GET)
+	public @ResponseBody Map<String, Object> ${entity}List(HttpSession session,@RequestParam(defaultValue = "1") Integer pageIndex, @RequestParam(defaultValue = "10") Integer pageSize) throws Exception {
+		// 获取渠道id
+		Admin currAdmin = (Admin) session.getAttribute("currAdmin");
+		Long channelId = currAdmin.getAdminChannelId();
+		List<${Entity}> ${entity}List =  ${entity}${serviceSelf}Service.find${Entity}List(channelId);
+		map.put("code", 1);
+		map.put("message", "success");
+		map.put("${entity}List", ${entity}List);
+		return map;
+	}
+	
+	/**
+	 * 编辑
+	 */
+	@RequestMapping(value = "add${Entity}", method = RequestMethod.POST)
+	public @ResponseBody Map<String, Object> add${Entity}(@RequestBody ${Entity} ${entity}) throws Exception {
+		map.put("code", 0);
+		map.put("message", "fail");
+		int r = ${entity}${serviceSelf}Service.add${Entity}(${entity});
+		if(r==1) {
+			map.put("code", 1);
+			map.put("message", "success");
+		}
+		return map;
+	}
+	
+	/**
+	 * 查看详情
+	 */
+	@RequestMapping(value = "get${Entity}Detail", method = RequestMethod.GET)
+	public @ResponseBody Map<String, Object> get${Entity}Detail(Long ${entity}Id) throws Exception {
+		map.put("code", 0);
+		map.put("message", "fail");
+		${Entity} ${entity} = ${entity}${serviceSelf}Service.find${Entity}Detail(${entity}Id);
+		if(null!=${entity}) {
+			map.put("code", 1);
+			map.put("message", "success");
+			map.put("${entity}", ${entity});
+		}
+		return map;
+	}
+	
+}

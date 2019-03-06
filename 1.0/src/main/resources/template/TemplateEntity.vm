@@ -1,0 +1,25 @@
+package ${entityPackage};
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class ${Entity} implements Serializable {
+	#foreach($tableDao in ${tableDaoList})
+/*
+	 * Auto $tableDao.getComment()
+	 */
+	private $tableDao.getJavaType() $tableDao.getReplaceColumn();
+	#end
+	
+    private static final long serialVersionUID = 1L;
+    
+	#foreach($tableDao in ${tableDaoList})
+public $tableDao.getJavaType() get$tableDao.getUpperColumn()() {
+        return $tableDao.getReplaceColumn();
+    }
+
+    public void set$tableDao.getUpperColumn()($tableDao.getJavaType() $tableDao.getReplaceColumn()) {
+        this.$tableDao.getReplaceColumn() = $tableDao.getReplaceColumn();
+    }
+	#end
+}

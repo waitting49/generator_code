@@ -1,0 +1,14 @@
+com\gjc\controller\TableController.class
+com\gjc\controller\TableToDao.class
+com\gjc\util\DateUtil.class
+com\gjc\entity\TableInfo.class
+com\gjc\util\ReflexUtil.class
+com\gjc\util\PackageUtil.class
+com\gjc\util\StringUtil.class
+com\gjc\entity\ConnectInfo.class
+com\gjc\util\DBHelper.class
+com\gjc\util\Connect.class
+com\gjc\generator\AppTest.class
+com\gjc\util\ConnectMysql.class
+com\gjc\entity\Replace.class
+com\gjc\generator\Application.class

@@ -1,0 +1,104 @@
+package ${daoPackage};
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+import ${entityPackage}.${Entity};
+import ${entityPackage}.${Entity}Example;
+
+public interface ${Entity}Mapper {
+
+    /**
+     *  根据指定的条件获取数据库记录数,${Entity}
+     *
+     * @param example
+     */
+    int countByExample(${Entity}Example example);
+
+    /**
+     *  根据指定的条件删除数据库符合条件的记录,${Entity}
+     *
+     * @param example
+     */
+    int deleteByExample(${Entity}Example example);
+
+    /**
+     *  根据主键删除数据库的记录,${Entity}
+     *
+     * @param ${Entity}Id
+     */
+    int deleteByPrimaryKey(Long ${Entity}Id);
+
+    /**
+     *  新写入数据库记录,${Entity}
+     *
+     * @param record
+     */
+    int insert(${Entity} record);
+
+    /**
+     *  动态字段,写入数据库记录,${Entity}
+     *
+     * @param record
+     */
+    int insertSelective(${Entity} record);
+
+    /**
+     *  根据指定的条件查询符合条件的数据库记录,${Entity}
+     *
+     * @param example
+     */
+    List<${Entity}> selectByExample(${Entity}Example example);
+    
+     /**
+     *  根据指定的条件查询符合条件的部分数据库记录,${Entity}
+     *
+     * @param example
+     */
+    List<Map<String,Object>> selectPartByExample(${Entity}Example example);
+    
+    /**
+     *  根据指定的条件查询符合条件的输入的数据库记录,${Entity}
+     *
+     * @param example
+     */
+    List<Map<String,Object>> selectInputByExample(@Param("inputCloumn") String inputCloumn, @Param("example") ${Entity}Example example);
+
+    /**
+     *  根据指定主键获取一条数据库记录,${Entity}
+     *
+     * @param ${Entity}Id
+     */
+    ${Entity} selectByPrimaryKey(Long ${Entity}Id);
+
+    /**
+     *  动态根据指定的条件来更新符合条件的数据库记录,${Entity}
+     *
+     * @param record
+     * @param example
+     */
+    int updateByExampleSelective(@Param("record") ${Entity} record, @Param("example") ${Entity}Example example);
+
+    /**
+     *  根据指定的条件来更新符合条件的数据库记录,${Entity}
+     *
+     * @param record
+     * @param example
+     */
+    int updateByExample(@Param("record") ${Entity} record, @Param("example") ${Entity}Example example);
+
+    /**
+     *  动态字段,根据主键来更新符合条件的数据库记录,${Entity}
+     *
+     * @param record
+     */
+    int updateByPrimaryKeySelective(${Entity} record);
+
+    /**
+     *  根据主键来更新符合条件的数据库记录,${Entity}
+     *
+     * @param record
+     */
+    int updateByPrimaryKey(${Entity} record);
+}
