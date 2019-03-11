@@ -18,9 +18,9 @@ public class Connect {
 	 Logger logger = Logger.getLogger(this.getClass().getName());
 	 
 	 private String driver   = "com.mysql.jdbc.Driver";
-	 private String url      = "jdbc:mysql:http://192.168.0.145:3306/park";
+	 private String url      = "jdbc:mysql:http://loaclhost:3306/student";
 	 private String user     = "root";
-	 private String password = "521";
+	 private String password = "123";
 	 
 	 public Connection getConnection() throws ClassNotFoundException, SQLException {
 		 	Connection conn = null;
